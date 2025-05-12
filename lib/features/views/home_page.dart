@@ -1,3 +1,4 @@
+import 'package:college_campus/features/views/widgets/items.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,8 +11,15 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Column(children: [Text('hi', style: TextStyle(fontSize: 30))]),
+    return SafeArea(
+      child: const Scaffold(
+        body: Stack(
+          children: [
+            Column(children: []),
+            Align(alignment: Alignment.bottomCenter, child: Items()),
+          ],
+        ),
+      ),
     );
   }
 }
