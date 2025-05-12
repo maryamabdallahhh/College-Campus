@@ -14,8 +14,7 @@ class _ItemsState extends State<Items> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Container(
-        alignment: Alignment.center,
-        height: 50,
+        height: 55,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(32),
           color: Colors.white,
@@ -23,16 +22,24 @@ class _ItemsState extends State<Items> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ItemIcon(data: 'Home', icon: Icons.home_outlined, onPressed: () {}),
+            ItemIcon(
+              data: 'Home',
+              icon: Icons.home_outlined,
+              onPressed: () {
+                Navigator.of(context).pushNamed("home");
+              },
+            ),
             ItemIcon(
               data: 'Courses',
               icon: Icons.folder_open_rounded,
               onPressed: () {},
             ),
             ItemIcon(
-              data: 'Schdule',
+              data: 'schedule',
               icon: Icons.calendar_month_outlined,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed("schedule");
+              },
             ),
             ItemIcon(
               data: 'Result',
