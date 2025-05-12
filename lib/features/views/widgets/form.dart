@@ -52,11 +52,7 @@ class _LoginFormState extends State<LoginForm> {
       );
 
       if (response.statusCode == 201) {
-        final responseData = jsonDecode(response.body);
-        setState(() {
-          result =
-              'email: ${responseData['email']}\npassword: ${responseData['password']}';
-        });
+        // final responseData = jsonDecode(response.body);
 
         Navigator.of(context).pushNamed("home");
       } else {
