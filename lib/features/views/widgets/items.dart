@@ -44,7 +44,9 @@ class _ItemsState extends State<Items> {
             ItemIcon(
               data: 'Result',
               icon: Icons.grade_outlined,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed("result");
+              },
             ),
             ItemIcon(
               data: 'Profile',
