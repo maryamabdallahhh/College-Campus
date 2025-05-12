@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 class CustomTextformfeild extends StatelessWidget {
-  final String hintText;
   final bool obscure;
   final void Function(String?)? onsaved;
   final TextEditingController? controller;
@@ -11,7 +10,6 @@ class CustomTextformfeild extends StatelessWidget {
 
   const CustomTextformfeild({
     super.key,
-    required this.hintText,
     this.obscure = false,
     required this.onsaved,
     this.controller,
@@ -22,7 +20,7 @@ class CustomTextformfeild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: TextFormField(
         keyboardType: keyboardtype,
         inputFormatters: inputformatters,
@@ -39,13 +37,12 @@ class CustomTextformfeild extends StatelessWidget {
           }
           return null;
         },
-        // onSaved: onsaved,
+        onSaved: onsaved,
         cursorColor: Colors.black87,
         style: TextStyle(color: Colors.black87),
         obscureText: obscure,
         decoration: InputDecoration(
-          hintText: hintText,
-          hintStyle: TextStyle(color: Color(0xffBDBBBB)),
+          hintStyle: TextStyle(color: Colors.black87),
           filled: true,
           fillColor: Colors.white,
           border: buildborder(),

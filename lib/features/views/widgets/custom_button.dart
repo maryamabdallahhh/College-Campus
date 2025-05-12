@@ -7,11 +7,11 @@ class CustomBottom extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      padding: const EdgeInsets.only(top: 32.0, bottom: 20),
       child: GestureDetector(
         onTap: ontap,
         child: Container(
-          height: 55,
+          height: 50,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
             color: Color(0xffF5F378),

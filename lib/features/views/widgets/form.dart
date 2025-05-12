@@ -1,0 +1,149 @@
+import 'package:college_campus/features/views/widgets/custom_button.dart';
+import 'package:college_campus/features/views/widgets/custom_textformfeild.dart';
+import 'package:flutter/material.dart';
+
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+class LoginForm extends StatefulWidget {
+  const LoginForm({super.key});
+
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  bool isLoading = false;
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  String? email, password;
+  AutovalidateMode autovalidate = AutovalidateMode.disabled;
+  final formkey = GlobalKey<FormState>();
+  final String apiUrl =
+      'https://mu-compass-backend.onrender.com/api/v1/auth/login';
+
+  String result = '';
+  @override
+  void initState() {
+    super.initState();
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _postData() async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      final response = await http.post(
+        Uri.parse(apiUrl),
+        headers: {'Content-Type': 'application/json'},
+
+        body: jsonEncode(<String, dynamic>{
+          'email': emailController.text,
+          'password': passwordController.text,
+        }),
+      );
+      print('Status code: ${response.statusCode}');
+      if (response.statusCode == 201) {
+        final responseData = jsonDecode(response.body);
+        setState(() {
+          result =
+              'email: ${responseData['email']}\npassword: ${responseData['password']}';
+        });
+      } else {
+        throw Exception('Failed to post data');
+      }
+    } catch (e) {
+      setState(() {
+        result = 'Error: $e';
+      });
+    } finally {
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: 30.0,
+        vertical: MediaQuery.of(context).size.height * .2,
+      ),
+      child:
+          isLoading
+              ? const Center(
+                child: CircularProgressIndicator(color: Colors.white),
+              )
+              : Form(
+                autovalidateMode: autovalidate,
+                key: formkey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '  Email',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        fontFamily: "Poppins",
+                      ),
+                    ),
+                    CustomTextformfeild(
+                      controller: emailController,
+                      keyboardtype: TextInputType.emailAddress,
+
+                      onsaved: (value) {
+                        email = value;
+                      },
+                    ),
+                    Text(
+                      '  password',
+                      style: TextStyle(
+                        fontFamily: "Roboto",
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                      ),
+                    ),
+                    CustomTextformfeild(
+                      controller: passwordController,
+                      obscure: true,
+                      onsaved: (value) {
+                        password = value;
+                      },
+                    ),
+                    CustomBottom(
+                      ontap: () async {
+                        if (formkey.currentState!.validate()) {
+                          formkey.currentState!.save();
+                          await _postData();
+                          if (result.startsWith('email:')) {
+                            Navigator.of(context).pushNamed("home");
+                          }
+                        } else {
+                          setState(() {
+                            autovalidate = AutovalidateMode.always;
+                          });
+                        }
+                      },
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Center(child: Text('forget password?')),
+                    ),
+                  ],
+                ),
+              ),
+    );
+  }
+}
