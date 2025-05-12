@@ -32,7 +32,9 @@ class _ItemsState extends State<Items> {
             ItemIcon(
               data: 'Courses',
               icon: Icons.folder_open_rounded,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed("courses");
+              },
             ),
             ItemIcon(
               data: 'schedule',
