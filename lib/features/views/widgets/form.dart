@@ -80,8 +80,8 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: 30.0,
-        vertical: MediaQuery.of(context).size.height * 0.2,
+        horizontal: 42.0,
+        vertical: MediaQuery.of(context).size.height * 0.1119,
       ),
       child: Form(
         autovalidateMode: autovalidate,
