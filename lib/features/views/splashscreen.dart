@@ -14,7 +14,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 3),
+      Duration(seconds: 2),
       () => Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (BuildContext context) => Login()),
       ),
@@ -24,11 +24,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffF5F378),
       body: Center(
         child: Text(
-          'College Campus',
-          style: TextStyle(color: Colors.black, fontSize: 30),
+          'Mu Campus',
+          style: TextStyle(
+            fontSize: 30,
+            fontFamily: 'Roboto',
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
     );
