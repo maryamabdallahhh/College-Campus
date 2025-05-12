@@ -1,3 +1,4 @@
+import 'package:college_campus/features/views/home_page.dart';
 import 'package:college_campus/features/views/widgets/custom_button.dart';
 import 'package:college_campus/features/views/widgets/custom_textformfeild.dart';
 import 'package:flutter/material.dart';
@@ -54,7 +55,9 @@ class _LoginFormState extends State<LoginForm> {
       if (response.statusCode == 201) {
         // final responseData = jsonDecode(response.body);
 
-        Navigator.of(context).pushNamed("home");
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (BuildContext context) => HomePage()),
+        );
       } else {
         throw Exception('email or password is incorrect!');
       }

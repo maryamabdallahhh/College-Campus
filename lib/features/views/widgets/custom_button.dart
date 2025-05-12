@@ -16,7 +16,7 @@ class CustomBottom extends StatelessWidget {
           height: 50,
           width: MediaQuery.of(context).size.width,
           decoration: BoxDecoration(
-            color: Color(0xffF5F378),
+            color: Colors.purple,
             borderRadius: BorderRadius.circular(23),
           ),
           child: Center(
@@ -32,7 +32,10 @@ class CustomBottom extends StatelessWidget {
                     )
                     : Text(
                       'Log in',
-                      style: TextStyle(color: Colors.black, fontSize: 18),
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
           ),
         ),

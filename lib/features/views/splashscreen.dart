@@ -28,6 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Text(
           'Mu Campus',
           style: TextStyle(
+            color: Colors.white,
             fontSize: 30,
             fontFamily: 'Roboto',
             fontWeight: FontWeight.bold,

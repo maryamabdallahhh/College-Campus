@@ -17,6 +17,22 @@ class GradesPage extends StatelessWidget {
     ];
 
     return Scaffold(
+      appBar: AppBar(
+        title: Center(
+          child: const Text.rich(
+            TextSpan(
+              text: 'Grades: ',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              children: [
+                TextSpan(
+                  text: 'Final Grades',
+                  style: TextStyle(color: Colors.purple),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -25,21 +41,6 @@ class GradesPage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text.rich(
-                    TextSpan(
-                      text: 'Grades: ',
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: 'Final Grades',
-                          style: TextStyle(color: Colors.purple),
-                        ),
-                      ],
-                    ),
-                  ),
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,25 +48,6 @@ class GradesPage extends StatelessWidget {
                       const Text(
                         "Overall CGPA: 4.00\nCredits earned: 50/150",
                         style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.grey.shade300),
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 6,
-                        ),
-                        child: Row(
-                          children: const [
-                            Text(
-                              "Semester",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            Icon(Icons.keyboard_arrow_down),
-                          ],
-                        ),
                       ),
                     ],
                   ),
@@ -80,7 +62,6 @@ class GradesPage extends StatelessWidget {
                   ),
                 ],
               ),
-              Align(alignment: Alignment.bottomCenter, child: Items()),
             ],
           ),
         ),
@@ -109,7 +90,7 @@ class GradeCard extends StatelessWidget {
       child: Container(
         margin: const EdgeInsets.only(bottom: 12),
         decoration: BoxDecoration(
-          color: const Color(0xFFF9F9F9),
+          color: Colors.white24,
           borderRadius: BorderRadius.circular(12),
           boxShadow: const [
             BoxShadow(color: Colors.black, blurRadius: 6, offset: Offset(0, 4)),
@@ -120,35 +101,29 @@ class GradeCard extends StatelessWidget {
             item.course,
             style: const TextStyle(
               fontWeight: FontWeight.w600,
-              color: Colors.black,
+              color: Colors.white,
             ),
           ),
-          trailing: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: const BorderRadius.only(
-                topRight: Radius.circular(12),
-                bottomRight: Radius.circular(12),
+          trailing: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                item.grade,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.purple,
+                ),
               ),
-              border: Border.all(color: Colors.grey.shade300),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  item.grade,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.purple,
-                  ),
+              Text(
+                item.semester,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
                 ),
-                Text(
-                  item.semester,
-                  style: const TextStyle(fontSize: 12, color: Colors.black),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

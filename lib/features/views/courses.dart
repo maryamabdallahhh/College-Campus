@@ -27,66 +27,50 @@ class CourseListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text(
-          'Courses',
-          style: TextStyle(color: Colors.white, fontSize: 24),
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.notifications, color: Colors.white),
-            onPressed: () {},
+        title: Center(
+          child: Text(
+            'Courses',
+            style: TextStyle(color: Colors.white, fontSize: 24),
           ),
-        ],
+        ),
       ),
-      body: Stack(
+      body: Column(
         children: [
-          Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    prefixIcon: Icon(Icons.search, color: Colors.grey),
-                    filled: true,
-                    fillColor: Colors.white24,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide.none,
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: 'Search',
+                hintStyle: TextStyle(color: Colors.grey),
+                prefixIcon: Icon(Icons.search, color: Colors.grey),
+                filled: true,
+                fillColor: Colors.white24,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  borderSide: BorderSide.none,
+                ),
+              ),
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: courses.length,
+              itemBuilder: (context, index) {
+                return Card(
+                  color: Colors.white12,
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  child: ListTile(
+                    title: Text(
+                      courses[index],
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
+                    trailing: Icon(Icons.chevron_right, color: Colors.white),
+                    onTap: () {},
                   ),
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: courses.length,
-                  itemBuilder: (context, index) {
-                    return Card(
-                      color: Colors.white12,
-                      margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                      child: ListTile(
-                        title: Text(
-                          courses[index],
-                          style: TextStyle(color: Colors.white, fontSize: 18),
-                        ),
-                        trailing: Icon(
-                          Icons.chevron_right,
-                          color: Colors.white,
-                        ),
-                        onTap: () {},
-                      ),
-                    );
-                  },
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 24.0),
-                child: Align(alignment: Alignment.bottomCenter, child: Items()),
-              ),
-            ],
+                );
+              },
+            ),
           ),
         ],
       ),
