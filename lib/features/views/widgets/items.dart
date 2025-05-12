@@ -53,7 +53,9 @@ class _ItemsState extends State<Items> {
             ItemIcon(
               data: 'Profile',
               icon: Icons.person_2_outlined,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed("profile");
+              },
             ),
           ],
         ),
