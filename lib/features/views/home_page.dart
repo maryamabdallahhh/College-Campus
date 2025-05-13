@@ -24,17 +24,17 @@ class HomePage extends StatelessWidget {
     {
       'title': 'IDP Study Abroad Expo',
       'subtitle': 'Islamabad',
-      'date': 'Wed, 28 Feb 2024',
+      'date': 'Wed, 28 AUG 2025',
     },
     {
       'title': 'Pathways to Development Conference',
       'subtitle': 'Lahore',
-      'date': 'Fri, 19 Apr 2024',
+      'date': 'Fri, 19 MAY 2025',
     },
     {
       'title': 'IELTS',
       'subtitle': 'Ielts recently collaborated with the mediation of...',
-      'date': '',
+      'date': 'MON, 16 jan 2026',
     },
   ];
 

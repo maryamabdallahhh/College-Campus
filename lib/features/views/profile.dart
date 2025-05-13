@@ -63,16 +63,6 @@ class ProfilePage extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.white24,
-                            ),
-                            child: Text(
-                              'Mark attend',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ),
                         ],
                       ),
                       SizedBox(height: 10),
